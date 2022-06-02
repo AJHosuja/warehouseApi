@@ -17,6 +17,10 @@ const product = {
     return db.query('select * from products where elguideCode=?'
       , [elguide], callback);
   },
+  getAllELGUIDE: function (callback) {
+    return db.query('select elguideCode from products'
+      , callback);
+  },
   getProductById: function (id, callback) {
     return db.query('delete from products where id=?'
       , [id], callback);

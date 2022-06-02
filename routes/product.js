@@ -89,4 +89,15 @@ router.delete('/:id', (req, response) => {
         });
     };
 });
+
+router.get('/', (req, response) => { 
+        productCRUD.getAllELGUIDE((dberr, dbRes) => { 
+            if (dberr) {
+                response.send(dberr);
+            } else {
+                console.log(dbRes);
+                response.send(dbRes);
+            }
+        });
+});
 module.exports = router;
