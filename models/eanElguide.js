@@ -8,7 +8,11 @@ const eanElguide = {
     selectWhereElguide: function (data, callback) {
         return db.query('select ean from eanelguide where elguide=?'
             , [data], callback);
-    }
+    },
+    getEanElguide: function ( callback) {
+        return db.query('select * from eanelguide'
+          , callback);
+      }
 };
 
 module.exports = eanElguide;

@@ -100,4 +100,15 @@ router.get('/', (req, response) => {
             }
         });
 });
+
+router.get('/eanelguide', (req, response) => { 
+    eanElguideCRUD.getEanElguide((dberr, dbRes) => { 
+        if (dberr) {
+            response.send(dberr);
+        } else {
+            console.log(dbRes);
+            response.send(dbRes);
+        }
+    });
+});
 module.exports = router;
