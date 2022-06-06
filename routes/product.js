@@ -111,4 +111,16 @@ router.get('/eanelguide', (req, response) => {
         }
     });
 });
+
+router.get('/all', (req, response) => { 
+    productCRUD.getAllFromProduct((dberr, dbRes) => { 
+        if (dberr) {
+            response.send(dberr);
+        } else {
+            console.log(dbRes);
+            response.send(dbRes);
+        }
+    });
+});
+
 module.exports = router;

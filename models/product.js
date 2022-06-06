@@ -24,6 +24,10 @@ const product = {
   getProductById: function (id, callback) {
     return db.query('delete from products where id=?'
       , [id], callback);
+  },
+  getAllFromProduct: function (callback) {
+    return db.query('select * from products'
+      , callback);
   }
 };
 
