@@ -47,6 +47,36 @@ router.post('/', (req, response) => {
             }
         });
     }
+
+    if (req.body.productEAN && req.body.elguideCode) {
+        eanElguideCRUD.selectWhereEan(req.body.productEAN, (dberr, dbRes) => {
+            if(dbRes.length >=  1) {
+                productCRUD.addProductELGUIDE(req.body, req.body.productEAN, (dberr, dbRes) => {
+                    if (dberr) {
+                        response.send(dberr);
+                    } else {
+                        console.log(dbRes);
+                        response.send(true);
+                    }});
+            } else {
+                eanElguideCRUD.insertIntoEanElguide(req.body, (dberr, dbRes) => {
+                    if(dbRes){
+                        productCRUD.addProductELGUIDE(req.body, req.body.productEAN, (dberr, dbRes) => {
+                            if (dberr) {
+                                response.send(dberr);
+                            } else {
+                                console.log(dbRes);
+                                response.send(true);
+                            }});
+                    }
+                    if (dberr) {
+                        response.send(dberr)
+                    }
+                })
+            }
+            
+        })
+    }
 })
 
 

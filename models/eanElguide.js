@@ -9,10 +9,14 @@ const eanElguide = {
         return db.query('select ean from eanelguide where elguide=?'
             , [data], callback);
     },
-    getEanElguide: function ( callback) {
+    getEanElguide: function (callback) {
         return db.query('select * from eanelguide'
-          , callback);
-      }
+            , callback);
+    },
+    insertIntoEanElguide: function (data, callback) {
+        return db.query('INSERT INTO eanelguide (ean, elguide) VALUES (?,?)'
+            , [data.productEAN , data.elguideCode], callback);
+    }
 };
 
 module.exports = eanElguide;
