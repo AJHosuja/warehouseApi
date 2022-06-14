@@ -28,6 +28,12 @@ const product = {
   getAllFromProduct: function (callback) {
     return db.query('select * from products'
       , callback);
+  },
+  getUpdateRackFromProduct: function (data ,callback) {
+    console.log(data.newRack);
+    console.log(data.id);
+    return db.query('update products set rack=? where id=?',
+      [data.newRack, data.id], callback);
   }
 };
 

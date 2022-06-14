@@ -153,4 +153,21 @@ router.get('/all', (req, response) => {
     });
 });
 
+
+router.post('/updateRack', (req, response) => {
+    console.log(req.body)
+    if (req.body.newRack && req.body.id) {
+        productCRUD.getUpdateRackFromProduct(req.body, (dberr, dbRes) => {
+            if(dbRes) {
+                response.send(true);
+            }
+            if(dberr) {
+                //console.log(dberr)
+                response.send(false);
+            }
+        })
+    }
+})
+
+
 module.exports = router;
