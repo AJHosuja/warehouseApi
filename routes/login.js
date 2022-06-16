@@ -34,7 +34,7 @@ router.post('/', (req, response) => {
 
 function generateAccessToken(username) {
     dotenv.config();
-    return jwt.sign(username, process.env.MY_TOKEN, { expiresIn: '300s' });
+    return jwt.sign(username, process.env.MY_TOKEN, { expiresIn: '7d' });
   }
   
 
