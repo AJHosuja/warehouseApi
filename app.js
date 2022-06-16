@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 var indexRouter = require('./routes/index');
 var addProductRouter = require('./routes/product');
 var login = require('./routes/login');
+var testToken = require('./routes/testToken');
 
 
 var app = express();
@@ -26,6 +27,7 @@ app.use(authenticateToken);
 
 app.use('/', indexRouter);
 app.use('/product', addProductRouter);
+app.use('/token', testToken);
 
 module.exports = app;
 
