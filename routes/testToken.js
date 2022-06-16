@@ -2,7 +2,7 @@ var express = require('express');
 const { response } = require('../app');
 var router = express.Router();
 
-router.post('/', (req, response) => {
+router.get('/', (req, response) => {
      response.send(true);
 })
 
