@@ -15,9 +15,4 @@ connection.connect(function (error) {
   }
 });
 
-setInterval(function () {
-  connection.query("SELECT 1");
-  console.log("query");
-}, 5000);
-
 module.exports = connection;
