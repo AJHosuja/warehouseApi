@@ -15,7 +15,6 @@ router.post("/", (req, response) => {
       } else {
         console.log(dbres);
         if (dbres[0]?.password) {
-          console.log("tääl");
           bcrypt.compare(
             req.body.password,
             dbres[0].password,
