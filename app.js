@@ -22,11 +22,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/login", login);
-app.use("/usermgn", userMgn);
 
 app.use(authenticateToken);
 app.use("/lastfive", lastFive);
 app.use("/product", addProductRouter);
+app.use("/usermgn", userMgn);
 app.use("/token", testToken);
 
 module.exports = app;
