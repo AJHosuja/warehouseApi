@@ -5,10 +5,11 @@ var logger = require("morgan");
 
 const jwt = require("jsonwebtoken");
 
-var indexRouter = require("./routes/index");
 var addProductRouter = require("./routes/product");
 var login = require("./routes/login");
 var testToken = require("./routes/testToken");
+var lastFive = require("./routes/lastFiveProducts");
+var userMgn = require("./routes/users");
 
 var app = express();
 var cors = require("cors");
@@ -21,10 +22,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/login", login);
+app.use("/usermgn", userMgn);
 
 app.use(authenticateToken);
-
-app.use("/", indexRouter);
+app.use("/lastfive", lastFive);
 app.use("/product", addProductRouter);
 app.use("/token", testToken);
 

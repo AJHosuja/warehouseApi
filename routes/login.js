@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 
 router.post("/", (req, response) => {
   if (req.body) {
-    console.log(req.body);
     loginCRUD.getPassWord(req.body.user, (dberr, dbres) => {
       const user = req.body.user;
       if (dberr) {
@@ -20,11 +19,17 @@ router.post("/", (req, response) => {
             dbres[0].password,
             (err, result) => {
               if (result) {
+                let admin = false;
+                if (dbres[0].admin) {
+                  console.log("here");
+                  admin = true;
+                }
                 const token = generateAccessToken({ username: user });
                 var resultJSON = {
                   userName: user,
                   userID: dbres[0].idusers,
                   token: token,
+                  admin: admin,
                 };
                 response.send(resultJSON);
               } else {
