@@ -36,7 +36,7 @@ const product = {
     return db.query("delete from products where id=?", [id], callback);
   },
   getAllFromProduct: function (callback) {
-    return db.query("select * from products", callback);
+    return db.query("SELECT id, productEAN, elguideCode, UPPER(rack) as rack, updateDate, updater FROM products", callback);
   },
   getUpdateRackFromProduct: function (data, callback) {
     return db.query(
