@@ -7,9 +7,11 @@ const jwt = require("jsonwebtoken");
 
 router.post("/", (req, response) => {
   if (req.body) {
+    console.log("LOGGING IN");
     loginCRUD.getPassWord(req.body.user, (dberr, dbres) => {
       const user = req.body.user;
       if (dberr) {
+        console.log(dberr);
         response.send(false);
       } else {
         console.log(dbres);
